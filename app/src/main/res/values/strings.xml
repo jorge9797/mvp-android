@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Movies</string>
+    <string name="placeholder_movie">x men fenix oscura</string>
+    <string name="placeholder_country">United Kingdom</string>
 </resources>
