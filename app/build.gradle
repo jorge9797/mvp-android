@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.movies"
-        minSdkVersion 15
+        minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -24,7 +24,7 @@ ext{
     supportLibraryVersion = '1.0.2'
     retrofitVersion =  '2.4.0'
     daggerVersion =  '2.9'
-    butterKnifeVersion = '8.8.1'
+    butterKnifeVersion = '10.2.1'
 
 
 }
@@ -59,7 +59,6 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
 
     //Butter Knife
-    implementation "com.jakewharton:butterknife:$butterKnifeVersion"
     implementation "com.jakewharton:butterknife:$butterKnifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 
