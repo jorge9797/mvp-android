@@ -1,14 +1,21 @@
 package com.example.movies;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.ViewGroup;
 
+import com.example.movies.movies.ListAdapter;
 import com.example.movies.movies.MoviesMVP;
 import com.example.movies.movies.ViewModel;
 import com.example.movies.root.App;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -29,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements MoviesMVP.View {
     MoviesMVP.Presenter presenter;
 
 
+    private ListAdapter listAdapter;
+    private List<ViewModel> resultList =  new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +46,14 @@ public class MainActivity extends AppCompatActivity implements MoviesMVP.View {
         ButterKnife.bind(this);
 
         (  (App) getApplication()  ).getComponent().inject(this);
+
+        listAdapter = new ListAdapter(resultList);
+
+        recyclerView.setAdapter(listAdapter);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this , DividerItemDecoration.HORIZONTAL));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
