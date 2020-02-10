@@ -4,7 +4,7 @@ import com.example.movies.http.apimodel.Result;
 
 import io.reactivex.Observable;
 
-public interface MovieRepository {
+public interface Repository {
 
     Observable<Result> getResultData();
 
