@@ -7,12 +7,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ViewGroup;
 
 import com.example.movies.movies.ListAdapter;
 import com.example.movies.movies.MoviesMVP;
 import com.example.movies.movies.ViewModel;
 import com.example.movies.root.App;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,13 +66,23 @@ public class MainActivity extends AppCompatActivity implements MoviesMVP.View {
     }
 
     @Override
-    public void updateData(ViewModel viewModel){
-
+    protected  void onStop(){
+        super.onStop();
+        presenter.rxJavaUnsuscribe();
+        resultList.clear();
+        listAdapter.notifyDataSetChanged();
     }
 
     @Override
-    public void  showSnackBar(String s){
+    public void updateData(ViewModel viewModel){
+        resultList.add(viewModel);
+        listAdapter.notifyItemChanged(resultList.size() - 1);
+        Log.d(TAG  ,  "Informacion nueva "+viewModel.getTitle());
+    }
 
+    @Override
+    public void  showSnackBar(String message){
+        Snackbar.make(  rootView , message , Snackbar.LENGTH_SHORT  ).show();
     }
 
 }
