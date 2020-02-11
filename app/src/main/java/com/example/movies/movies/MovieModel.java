@@ -20,7 +20,7 @@ public class MovieModel implements MoviesMVP.Model {
             @Override
             public ViewModel apply(Result result, String s) throws Exception {
                 //TODO: cambiar result.toString cuando se tenga el POJO de datos
-                return new ViewModel(  result.toString() ,  s  );
+                return new ViewModel(  result.getTitle() ,  s  );
             }
         });
     }
